@@ -6,13 +6,13 @@
 h1{  
     width: 670px;
     text-shadow: 0 7px 10px rgba(0, 0, 0, .5);
-    margin: 0 auto;  /*’†‰›‚É”z’u*/
+    margin: 0 auto;  /*ä¸­å¤®ã«é…ç½®*/
 }
 body{  
-    font-family='Yu Gothic','‚l‚r ‚oƒSƒVƒbƒN',serif;
+    font-family='Yu Gothic','ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯',serif;
     background-color: #ffffff;  
 }
-/*ƒ^ƒuØ‚è‘Ö‚¦‘S‘Ì‚ÌƒXƒ^ƒCƒ‹*/
+/*ã‚¿ãƒ–åˆ‡ã‚Šæ›¿ãˆå…¨ä½“ã®ã‚¹ã‚¿ã‚¤ãƒ«*/
 .tabs {
   margin-top: 50px;
   padding-bottom: 40px;
@@ -22,7 +22,7 @@ body{
   margin: 0 auto;
 }
 
-/*ƒ^ƒu‚ÌƒXƒ^ƒCƒ‹*/
+/*ã‚¿ãƒ–ã®ã‚¹ã‚¿ã‚¤ãƒ«*/
 .tab_item {
   width: calc(100%/3);
   height: 50px;
@@ -42,12 +42,12 @@ body{
   opacity: 0.75;
 }
 
-/*ƒ‰ƒWƒIƒ{ƒ^ƒ“‚ğ‘S‚ÄÁ‚·*/
+/*ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã‚’å…¨ã¦æ¶ˆã™*/
 input[name="tab_item"] {
   display: none;
 }
 
-/*ƒ^ƒuØ‚è‘Ö‚¦‚Ì’†g‚ÌƒXƒ^ƒCƒ‹*/
+/*ã‚¿ãƒ–åˆ‡ã‚Šæ›¿ãˆã®ä¸­èº«ã®ã‚¹ã‚¿ã‚¤ãƒ«*/
 .tab_content {
   display: none;
   padding: 40px 40px 0;
@@ -56,14 +56,14 @@ input[name="tab_item"] {
 }
 
 
-/*‘I‘ğ‚³‚ê‚Ä‚¢‚éƒ^ƒu‚ÌƒRƒ“ƒeƒ“ƒc‚Ì‚İ‚ğ•\¦*/
+/*é¸æŠã•ã‚Œã¦ã„ã‚‹ã‚¿ãƒ–ã®ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã®ã¿ã‚’è¡¨ç¤º*/
 #all:checked ~ #all_content,
 #kiroku:checked ~ #kiroku_content,
 #gakusyuunaiyou:checked ~ #gakusyuunaiyou_content {
   display: block;
 }
 
-/*‘I‘ğ‚³‚ê‚Ä‚¢‚éƒ^ƒu‚ÌƒXƒ^ƒCƒ‹‚ğ•Ï‚¦‚é*/
+/*é¸æŠã•ã‚Œã¦ã„ã‚‹ã‚¿ãƒ–ã®ã‚¹ã‚¿ã‚¤ãƒ«ã‚’å¤‰ãˆã‚‹*/
 .tabs input:checked + .tab_item {
   background-color: #5ab4bd;
   color: #fff;
@@ -76,7 +76,7 @@ input[name="tab_item"] {
 
 <?php
 
-//“ü—Í’l‚ğæ“¾//
+//å…¥åŠ›å€¤ã‚’å–å¾—//
 $comment = $_POST['comment'];
 $name = $_POST['name'];
 $month = $_POST['month'];
@@ -86,14 +86,7 @@ $editnumber = $_POST['editnumber'];
 $delete = $_POST['delete'];
 
 
-//3-1:ƒf[ƒ^ƒx[ƒX‚ğŠJ‚­//
-$dsn='ƒf[ƒ^ƒx[ƒX–¼';
-$user='ƒ†[ƒU[–¼';
-$password='ƒpƒXƒ[ƒh';
-$pdo=new PDO($dsn,$user,$password,array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_WARNING));
-
-
-//3-2:ƒe[ƒuƒ‹‚ğì‚é//
+//3-2:ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œã‚‹//
 $sql="CREATE TABLE IF NOT EXISTS tableyu"
 ."("
 ."id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,"
@@ -105,7 +98,7 @@ $sql="CREATE TABLE IF NOT EXISTS tableyu"
 $stmt=$pdo->query($sql);
 
 
-//3-5:ƒe[ƒuƒ‹‚Éƒf[ƒ^‚ğ“ü—Í‚·‚é//
+//3-5:ãƒ†ãƒ¼ãƒ–ãƒ«ã«ãƒ‡ãƒ¼ã‚¿ã‚’å…¥åŠ›ã™ã‚‹//
 if(!empty($_POST["comment"]) &&!empty($_POST["name"]) &&empty($_POST["editnumber"])){
 	$sql=$pdo->prepare("INSERT INTO tableyu(name,comment,month,day)VALUES(:name,:comment,:month,:day)");
 	$sql->bindParam(':name',$name,PDO::PARAM_STR);
@@ -116,7 +109,7 @@ if(!empty($_POST["comment"]) &&!empty($_POST["name"]) &&empty($_POST["editnumber
 }
 
 
-//3-8:íœ//
+//3-8:å‰Šé™¤//
 if(!empty($_POST["delete"])){
 	$sql='delete from table11 where id=:id';
 	$stmt=$pdo->prepare($sql);
@@ -126,8 +119,8 @@ if(!empty($_POST["delete"])){
 
 
 if(!empty($_POST["edit"])){
-	//•ÒW@“ü—Í—“‚É•\¦//
-	if(!empty($_POST["edit"])){       //edit‚É”’l‚ª“ü‚ê‚ç‚ê‚½‚çÀs
+	//ç·¨é›†ã€€å…¥åŠ›æ¬„ã«è¡¨ç¤º//
+	if(!empty($_POST["edit"])){       //editã«æ•°å€¤ãŒå…¥ã‚Œã‚‰ã‚ŒãŸã‚‰å®Ÿè¡Œ
 		$sql=$pdo->prepare('SELECT id,name,comment,month,day FROM tableyu WHERE id = :edit');
 		$sql->bindParam(':edit',$edit,PDO::PARAM_INT);
 		$sql->execute();
@@ -141,8 +134,8 @@ if(!empty($_POST["edit"])){
 }
 
 
-//3-7:•ÒW//
-if(!empty($_POST['name']) &&!empty($_POST['comment']) &&!empty($_POST['month']) &&!empty($_POST['day']) && !empty($_POST['editnumber'])){       //editnumber‚É”’l‚ª“ü‚ê‚ç‚ê‚½‚çÀs
+//3-7:ç·¨é›†//
+if(!empty($_POST['name']) &&!empty($_POST['comment']) &&!empty($_POST['month']) &&!empty($_POST['day']) && !empty($_POST['editnumber'])){       //editnumberã«æ•°å€¤ãŒå…¥ã‚Œã‚‰ã‚ŒãŸã‚‰å®Ÿè¡Œ
 	$sql='update tableyu set name=:name,comment=:comment,month=:month,day=:day where id=:editnumber';
 	$stmt=$pdo->prepare($sql);
 	$stmt->bindParam(':name',$name,PDO::PARAM_STR);
@@ -155,7 +148,7 @@ if(!empty($_POST['name']) &&!empty($_POST['comment']) &&!empty($_POST['month']) 
 ?>
 <br>
 <body>
-<font face="HGs‘‘Ì" color="#000000" size="5"><h1>ƒvƒƒOƒ‰ƒ~ƒ“ƒO@ŠwK”õ–Y˜^</h1></font>
+<font face="HGè¡Œæ›¸ä½“" color="#000000" size="5"><h1>ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°ã€€å­¦ç¿’å‚™å¿˜éŒ²</h1></font>
 <hr size="2"  color="#000000" />
 
 
@@ -167,60 +160,60 @@ if(!empty($_POST['name']) &&!empty($_POST['comment']) &&!empty($_POST['month']) 
 <label class="tab_item" for="gakusyuunaiyou">HTML</label>
 
 <div class="tab_content" id="all_content">
-<b>ŠwK“ú</b>
+<b>å­¦ç¿’æ—¥</b>
 <br />
 <input type="text" name="month" size="15" value="<?php echo $monthedit; ?>">
-Œ
+æœˆ
 <input type="text" name="day" size="15" value="<?php echo $dayedit; ?>">
-“ú
+æ—¥
 <br />
-<b>ŠwKŠÔ</b><br />
+<b>å­¦ç¿’æ™‚é–“</b><br />
 <input type="text" name="name" size="15" value="<?php echo $nameedit; ?>">
-ŠÔ
+æ™‚é–“
 <br />
-<b>ŠwK“à—e</b><br />
+<b>å­¦ç¿’å†…å®¹</b><br />
 <textarea name="comment" cols="50" rows="6" ><?php echo $commentedit; ?></textarea>
-<input type="submit" value="‘—M"><br /><br />
+<input type="submit" value="é€ä¿¡"><br /><br />
 <input type="hidden" name="editnumber" value="<?php echo $numberedit; ?>">
-<input type="text" name="delete" placeholder="íœ‘ÎÛ”Ô†" >
-<input type="submit" value="íœ"><br /><br />
-<input type="text" name="edit" placeholder="•ÒW”Ô†">
-<input type="submit" value="‘—M"><br />
+<input type="text" name="delete" placeholder="å‰Šé™¤å¯¾è±¡ç•ªå·" >
+<input type="submit" value="å‰Šé™¤"><br /><br />
+<input type="text" name="edit" placeholder="ç·¨é›†ç•ªå·">
+<input type="submit" value="é€ä¿¡"><br />
 </body>
 
 <p>
 <?php
 if(!empty($_POST["comment"]) &&empty($_POST["name"])){
-	echo("<h5>–¼‘O‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢</h5>");
+	echo("<h5>åå‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„</h5>");
 }
 if(!empty($_POST["name"]) &&empty($_POST['comment'])){
-	echo("<h5>ƒRƒƒ“ƒg‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢</h5>");
+	echo("<h5>ã‚³ãƒ¡ãƒ³ãƒˆã‚’å…¥åŠ›ã—ã¦ãã ã•ã„</h5>");
 }
 ?>
 </p>
 
 <?php
-//3-6:ƒf[ƒ^‚ğ•\¦‚·‚é//
+//3-6:ãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ç¤ºã™ã‚‹//
 $sql='SELECT*FROM tableyu ORDER BY id ASC';
 $stmt=$pdo->query($sql);
 
 $results=$stmt->fetchAll();
 
 foreach($results as $row){
-//$row‚Ì’†‚É‚Íƒe[ƒuƒ‹‚ÌƒJƒ‰ƒ€–¼‚ª“ü‚é
+//$rowã®ä¸­ã«ã¯ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚«ãƒ©ãƒ åãŒå…¥ã‚‹
 echo 'No.'.$row['id'].' ';
-echo $row['month'].'Œ ';
-echo $row['day'].'“ú ';
-echo $row['name'].'ŠÔ | ';
+echo $row['month'].'æœˆ ';
+echo $row['day'].'æ—¥ ';
+echo $row['name'].'æ™‚é–“ | ';
 echo $row['comment'].'</br>';
 }
 ?>
 </div>
 <div class="tab_content" id="kiroku_content">
-    Python‚ÌŠwK“à—e‚ª‚±‚±‚É“ü‚è‚Ü‚·
+    Pythonã®å­¦ç¿’å†…å®¹ãŒã“ã“ã«å…¥ã‚Šã¾ã™
 </div>
 <div class="tab_content" id="gakusyuunaiyou_content">
-    HTML‚ÌŠwK“à—e‚ª‚±‚±‚É“ü‚è‚Ü‚·
+    HTMLã®å­¦ç¿’å†…å®¹ãŒã“ã“ã«å…¥ã‚Šã¾ã™
 </div>
 </form>
 </html>
